@@ -56,11 +56,11 @@
       <version>2.5</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>com.oracle</groupId>
-      <artifactId>ojdbc6</artifactId>
-      <version>11.2.0.3</version>
-    </dependency>
+    <!--
+      The Oracle driver is not in a public repository and is not bundled. It is
+      installed in the application server's lib directory and reached through
+      the container datasource; see portal.properties.
+    -->
   </dependencies>
 
   <build>

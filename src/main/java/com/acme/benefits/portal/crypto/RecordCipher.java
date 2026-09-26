@@ -10,7 +10,6 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -31,8 +30,12 @@ public class RecordCipher {
         Security.addProvider(new BouncyCastleProvider());
     }
 
-    @Value("${portal.crypto.recordKey}")
+    /** Injected from portal.properties by the placeholder configurer. */
     private String recordKeyBase64;
+
+    public void setRecordKeyBase64(String recordKeyBase64) {
+        this.recordKeyBase64 = recordKeyBase64;
+    }
 
     private final SecureRandom random = new SecureRandom();
 

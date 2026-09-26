@@ -10,7 +10,6 @@ import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 
 import org.apache.commons.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -33,14 +32,13 @@ public class ClearingHouseClient {
         "TLS_DHE_RSA_WITH_AES_128_CBC_SHA"
     };
 
-    @Value("${portal.clearinghouse.host}")
     private String host;
-
-    @Value("${portal.keystore.path}")
     private String keystorePath;
-
-    @Value("${portal.keystore.password}")
     private String keystorePassword;
+
+    public void setHost(String host) { this.host = host; }
+    public void setKeystorePath(String keystorePath) { this.keystorePath = keystorePath; }
+    public void setKeystorePassword(String keystorePassword) { this.keystorePassword = keystorePassword; }
 
     public SSLSocket connect() throws Exception {
         KeyStore ks = KeyStore.getInstance("PKCS12", "BC");
